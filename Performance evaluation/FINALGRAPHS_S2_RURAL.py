@@ -10,13 +10,13 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import math
 
-os.chdir('C:/omnetpp-5.2.1/workbench/flora/simulations/results/json/Scenario1/rural/NQ')
+os.chdir('D:/OneDrive - Universidad Politécnica de Cartagena/OMNeT++/workbench2/flora/simulations/results/json/Scenario2/rural/NQ')
 files_list = os.listdir();
 print("files_list: "+str(files_list))
-var = ['rural-SC1SEED-10--0-20190618-15:11:08-2768','rural-SC1SEED-11--0-20190618-15:15:21-2768','rural-SC1SEED-12--0-20190618-15:19:31-2768',
-       'rural-SC1SEED-13--0-20190618-15:23:36-2768','rural-SC1SEED-14--0-20190618-15:30:43-2768','rural-SC1SEED-15--0-20190618-15:39:19-2768',
-       'rural-SC1SEED-16--0-20190618-15:43:34-2768','rural-SC1SEED-17--0-20190618-15:48:53-2768','rural-SC1SEED-18--0-20190618-15:52:53-2768',
-       'rural-SC1SEED-19--0-20190618-16:19:48-956']
+var = ['SC2SEED-10-rural-0-20190618-11:55:07-1260','SC2SEED-11-rural-0-20190618-08:47:50-5124','SC2SEED-12-rural-0-20190618-08:54:02-5124',
+       'SC2SEED-13-rural-0-20190618-11:39:46-1260','SC2SEED-14-rural-0-20190618-11:46:01-1260','SC2SEED-15-rural-0-20190618-09:08:14-5124',
+       'SC2SEED-16-rural-0-20190618-09:12:12-5124','SC2SEED-17-rural-0-20190618-09:16:29-5124','SC2SEED-18-rural-0-20190618-09:20:25-5124',
+       'SC1SEED-19-rural-0-20190618-11:07:31-1900']
 df = pd.DataFrame()
 df_QoE_jitter = pd.DataFrame()
 df_QoE_delay = pd.DataFrame()
@@ -78,8 +78,9 @@ df_QoE.columns = nombres_Q
 df_QoD['mean'] = df_QoD[nombres_Q[1:]].sum(axis=1)/len(nombres_Q[1:])
 df_QoI['mean'] = df_QoI[nombres_Q[1:]].sum(axis=1)/len(nombres_Q[1:])
 df_QoE['mean'] = df_QoE[nombres_Q[1:]].sum(axis=1)/len(nombres_Q[1:])
+df.to_csv('D:/OneDrive - Universidad Politécnica de Cartagena/OMNeT++/S2_Rural.csv',sep=';',index=False,header=True)
 
-print(list(df.columns.values))
+'''print(list(df.columns.values))
 
 df_QoE_jitter['time'] = df['time']
 for lo in range(10,20):
@@ -171,7 +172,7 @@ ax2.set_xlim([0.0, df['time'].max()])
 ax2.set_ylim([0.0, 1.0])
 plt.show()
 
-os.chdir('C:/omnetpp-5.2.1/workbench/flora/simulations/results/json/Scenario1/rural/NEC')
+os.chdir('C:/omnetpp-5.2.1/workbench/flora/simulations/results/json/Scenario2/rural/NEC')
 files_list = os.listdir();
 print("files_list: "+str(files_list))
 
@@ -285,4 +286,4 @@ ax3.set_ylabel('Normalized Value',fontdict=font)
 ax3.set_xlim([0.0, df['time'].max()])
 ax3.set_ylim([0.0, 1.0])
 
-plt.show()
+plt.show()'''

@@ -10,13 +10,13 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import math
 
-os.chdir('C:/omnetpp-5.2.1/workbench/flora/simulations/results/json/Scenario1/rural/NQ')
+os.chdir('D:/OneDrive - Universidad Politécnica de Cartagena/OMNeT++/workbench2/flora/simulations/results/json/Scenario2/subur/NQ')
 files_list = os.listdir();
 print("files_list: "+str(files_list))
-var = ['rural-SC1SEED-10--0-20190618-15:11:08-2768','rural-SC1SEED-11--0-20190618-15:15:21-2768','rural-SC1SEED-12--0-20190618-15:19:31-2768',
-       'rural-SC1SEED-13--0-20190618-15:23:36-2768','rural-SC1SEED-14--0-20190618-15:30:43-2768','rural-SC1SEED-15--0-20190618-15:39:19-2768',
-       'rural-SC1SEED-16--0-20190618-15:43:34-2768','rural-SC1SEED-17--0-20190618-15:48:53-2768','rural-SC1SEED-18--0-20190618-15:52:53-2768',
-       'rural-SC1SEED-19--0-20190618-16:19:48-956']
+var = ['SC2SEED-10-subur-0-20190617-11:35:58-7308','SC2SEED-11-subur-0-20190617-11:39:59-7308','SC2SEED-12-subur-0-20190617-11:43:34-7308',
+       'SC2SEED-13-subur-0-20190617-11:56:57-7308','SC2SEED-14-subur-0-20190617-12:02:30-7308','SC2SEED-15-subur-0-20190617-12:08:18-7308',
+       'SC2SEED-16-subur-0-20190618-10:10:47-2696','SC2SEED-17-subur-0-20190618-10:16:46-2696','SC2SEED-18-urban-0-20190617-13:19:53-968',
+       'SC2SEED-19-urban-0-20190617-13:23:26-968']
 df = pd.DataFrame()
 df_QoE_jitter = pd.DataFrame()
 df_QoE_delay = pd.DataFrame()
@@ -42,7 +42,7 @@ for t in range(0,len(files_list)):
 #for t in range(0,3):
     data = pd.read_json(files_list[t])
     columns = len(data[var[t]]['vectors'])
-    print("columns: "+str(columns)+" | JSON file: "+str(files_list[t]))
+    print("columns: "+str(columns))
 
     if t==0:
         df['time'] = data[var[t]]['vectors'][0]['time']
@@ -78,8 +78,9 @@ df_QoE.columns = nombres_Q
 df_QoD['mean'] = df_QoD[nombres_Q[1:]].sum(axis=1)/len(nombres_Q[1:])
 df_QoI['mean'] = df_QoI[nombres_Q[1:]].sum(axis=1)/len(nombres_Q[1:])
 df_QoE['mean'] = df_QoE[nombres_Q[1:]].sum(axis=1)/len(nombres_Q[1:])
+df.to_csv('D:/OneDrive - Universidad Politécnica de Cartagena/OMNeT++/S2_Subur.csv',sep=';',index=False,header=True)
 
-print(list(df.columns.values))
+'''print(list(df.columns.values))
 
 df_QoE_jitter['time'] = df['time']
 for lo in range(10,20):
@@ -171,7 +172,7 @@ ax2.set_xlim([0.0, df['time'].max()])
 ax2.set_ylim([0.0, 1.0])
 plt.show()
 
-os.chdir('C:/omnetpp-5.2.1/workbench/flora/simulations/results/json/Scenario1/rural/NEC')
+os.chdir('C:/omnetpp-5.2.1/workbench/flora/simulations/results/json/Scenario2/subur/NEC')
 files_list = os.listdir();
 print("files_list: "+str(files_list))
 
@@ -285,4 +286,4 @@ ax3.set_ylabel('Normalized Value',fontdict=font)
 ax3.set_xlim([0.0, df['time'].max()])
 ax3.set_ylim([0.0, 1.0])
 
-plt.show()
+plt.show()'''
